@@ -30,6 +30,7 @@ class MensajeContactoAdmin(admin.ModelAdmin):
     list_display = ('asunto', 'nombre', 'email', 'fecha_envio', 'leido')
     list_filter = ('leido', 'fecha_envio')
     search_fields = ('nombre', 'email', 'asunto')
+    
     actions = ["marcar_como_leido", "marcar_como_no_leido"] #SE agrega una accion personalizada para marcar mensajes como leídos o no leídos
 
     # Acciones personalizadas para marcar mensajes como leídos o no leídos
