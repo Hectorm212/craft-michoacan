@@ -1,0 +1,97 @@
+{% extends 'artesanias/encabezado.html' %}
+{% load static %}
+
+{% block titulo %}Jarrón de Barro - Craft Mich{% endblock %}
+
+{% block contenido %}
+<main class="detalle-main">
+    
+    <!-- Enlace de regreso al catálogo -->
+    <div class="back-navigation">
+        <a href="{% url 'Catalogo' %}" class="back-link">
+            <span class="back-arrow">&larr;</span> Volver
+        </a>
+    </div>
+
+    <!-- Contenedor Principal del Producto -->
+    <section class="product-detail-container">
+        
+        <!-- Columna Izquierda: Imagen del Producto -->
+        <div class="product-detail-image-box">
+            <img src="{% static 'artesanias/img/jarras_barro.jpg' %}" alt="Jarrón de Barro" class="detail-img">
+        </div>
+
+        <!-- Columna Derecha: Información y Acciones -->
+        <div class="product-detail-info-box">
+            <h1 class="detail-title">Jarrón de Barro</h1>
+            <p class="detail-origin">Tzintzuntzan</p>
+
+            <!-- Calificación con estrellas -->
+            <div class="detail-rating">
+                <span class="rating-label">Calificación de producto</span>
+                <div class="stars">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+            </div>
+
+            <!-- Descripción -->
+            <p class="detail-description">
+                Una pieza de arte popular purépecha, famoso por su maestría artesanal. Se caracteriza por el uso de técnicas tradicionales como el barro bruñido y vidriado. Suele destacar por sus detalles pintados a mano con motivos locales.
+            </p>
+
+            <!-- Sección de Compra (Cantidad y Precio) -->
+            <div class="purchase-section">
+                <div class="quantity-wrapper">
+                    <label class="quantity-label">Cantidad</label>
+                    <div class="quantity-selector">
+                        <button type="button" class="qty-btn" id="btn-minus">&minus;</button>
+                        <input type="number" class="qty-input" id="input-qty" value="1" min="1" readonly>
+                        <button type="button" class="qty-btn" id="btn-plus">&plus;</button>
+                    </div>
+                </div>
+                
+                <div class="detail-price-box">
+                    <span class="detail-price">$430.00 MXN</span>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="action-buttons-container">
+                <button type="button" class="btn-add-to-cart">
+                    Agregar al carrito
+                </button>
+                <button type="button" class="btn-wishlist" aria-label="Añadir a favoritos">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="heart-icon">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+</main>
+
+<!-- Script opcional integrado al final para dar vida al sumador/restador de cantidad -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnMinus = document.getElementById('btn-minus');
+        const btnPlus = document.getElementById('btn-plus');
+        const inputQty = document.getElementById('input-qty');
+
+        btnMinus.addEventListener('click', () => {
+            let val = parseInt(inputQty.value);
+            if(val > 1) inputQty.value = val - 1;
+        });
+
+        btnPlus.addEventListener('click', () => {
+            let val = parseInt(inputQty.value);
+            inputQty.value = val + 1;
+        });
+    });
+</script>
+{% endblock %}

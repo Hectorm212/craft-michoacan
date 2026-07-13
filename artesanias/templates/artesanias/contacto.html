@@ -1,0 +1,57 @@
+{% extends 'artesanias/encabezado.html' %}
+{% load static %}
+
+{% block titulo %}Contacto - Craft Mich{% endblock %}
+
+{% block contenido %}
+<main class="contacto-main">
+    <div class="contacto-form-container">
+        <!-- Título y subtítulo de la sección -->
+        <h1 class="contacto-title">Contáctanos</h1>
+        <p class="contacto-subtitle">¿Tienes algún problema? Escríbenos y te ayudaremos</p>
+
+        {% if messages %}
+            <div class="alert-messages" style="background-color: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 5px; text-align: center;">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Formulario POST de Django -->
+        <form method="POST" action="{% url 'Contacto' %}" class="craft-contacto-form">
+            {% csrf_token %}
+
+            <!-- Campo: Nombre completo -->
+            <div class="contacto-form-group">
+                <label for="nombre" class="contacto-label">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" class="contacto-input" placeholder="Tu nombre" required>
+            </div>
+
+            <!-- Campo: Correo electrónico -->
+            <div class="contacto-form-group">
+                <label for="email" class="contacto-label">Correo electrónico</label>
+                <input type="email" id="email" name="email" class="contacto-input" placeholder="ejemplo@correo.com" required>
+            </div>
+
+            <!-- Campo: Asunto / Tipo de problema -->
+            <div class="contacto-form-group">
+                <label for="asunto" class="contacto-label">Asunto</label>
+                <input type="text" id="asunto" name="asunto" class="contacto-input" placeholder="Ej. Problema con mi pedido, Duda con el catálogo" required>
+            </div>
+
+            <!-- Campo: Mensaje / Descripción del problema -->
+            <div class="contacto-form-group">
+                <label for="mensaje" class="contacto-label">Mensaje o descripción del problema</label>
+                <textarea id="mensaje" name="mensaje" class="contacto-textarea" placeholder="Escribe aquí los detalles de tu situación..." rows="5" required></textarea>
+            </div>
+
+            <!-- Botón de Envío -->
+            <button type="submit" class="btn-submit-contacto">
+                Enviar mensaje
+            </button>
+        </form>
+    </div>
+</main>
+
+{% endblock %}

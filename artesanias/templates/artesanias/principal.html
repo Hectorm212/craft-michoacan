@@ -1,0 +1,25 @@
+{% extends 'artesanias/encabezado.html' %}
+{% load static %}
+
+{% block titulo %}Inicio - Craft Mich{% endblock %}
+
+{% block contenido %}
+<section class="hero-section">
+    <!-- Lado Izquierdo: Imagen destacada -->
+    <div class="hero-image-container">
+        <img src="{% static 'artesanias/images/jarron.png' %}" alt="Artesanías de Michoacán" class="hero-image">
+    </div>
+
+    <!-- Lado Derecho: Mensaje de Bienvenida -->
+    <div class="hero-text-container">
+        <div class="hero-content">
+            <h1 class="hero-title">Bienvenidos<br>Craft Mich</h1>
+            <p class="hero-subtitle">Descubre la magia y tradición de nuestros municipios</p>
+            <a href="{% url 'Catalogo' %}" class="hero-button">
+                Explorar catálogo 
+                <span class="button-arrow">&rarr;</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

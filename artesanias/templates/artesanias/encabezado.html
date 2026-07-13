@@ -1,0 +1,81 @@
+{% load static %}
+{% block encabezado %}
+<!-- Enlace al CSS con el nuevo nombre 'estilo.css' -->
+<link href="{% static 'artesanias/css/estilo.css' %}" rel="stylesheet" type="text/css">
+
+<header class="craft-header">
+    <div class="header-container">
+        <!-- Bloque de Identidad / Logo -->
+        <div class="header-logo">
+            {% block header_logo %}
+            <img src="{% static 'artesanias/images/logo.png' %}" alt="Logo Craft Mich" class="logo-img">
+            <span class="logo-text">Craft Mich</span>
+            {% endblock %}
+        </div>
+
+        <!-- Menú de Navegación Central -->
+        <nav class="header-nav">
+            {% block header_menu %}
+            <ul>
+                <li><a href="{% url 'Principal' %}" class="nav-item">Inicio</a></li>
+                <li><a href="{% url 'Catalogo' %}" class="nav-item">Catálogo</a></li>
+                <li><a href="{% url 'Conocenos' %}" class="nav-item">Quienes somos</a></li>
+                <li><a href="{% url 'Contacto' %}" class="nav-item">Contacto</a></li>
+            </ul>
+            {% endblock %}
+        </nav>
+
+        <!-- Bloque de Acciones / Carrito -->
+        <div class="header-actions">
+            {% block header_actions %}
+            <!-- Menú de Usuario -->
+            <div class="user-dropdown">
+                <button class="user-button" aria-label="Cuenta de usuario">
+                    <!-- Icono SVG de persona (usuario) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="user-icon">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+                <div class="dropdown-content">
+                    <a href="{% url 'Login' %}">Iniciar sesión</a>
+                    <a href="{% url 'Registro' %}">Registrarse</a>
+                </div>
+            </div>
+            <button id="cartBtn" class="cart-button" aria-label="Carrito de compras">
+                <img src="{% static 'artesanias/images/carrito.png' %}" alt="Carrito" class="cart-icon">
+                <span class="cart-count">0</span>
+            </button>
+            {% endblock %}
+        </div>
+    </div>
+</header>
+{% block contenido%}
+{% endblock %}
+<footer class="craft-footer">
+    <div class="footer-container">
+        <!-- Izquierda: Logo y Copyright -->
+        <div class="footer-left">
+            <div class="footer-logo">
+                <img src="{% static 'artesanias/images/logo.png' %}" alt="Craft Mich Logo" class="footer-logo-img">
+                <span class="footer-logo-text">Craft Mich</span>
+            </div>
+            <p class="footer-copy">TODOS LOS DERECHOS RESERVADOS</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook"><img src="{% static 'artesanias/images/facebook.png' %}" alt="Facebook" class="social-icon"></a>
+                <a href="#" aria-label="Instagram"><img src="{% static 'artesanias/images/instagram.png' %}" alt="Instagram" class="social-icon"></a>
+            </div>
+        </div>
+        <!-- Derecha: Enlaces de ayuda -->
+        <div class="footer-right">
+            <ul class="footer-links">
+                <li><a href="#">Correo electrónico</a></li>
+                <li><a href="#">Ayuda</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script src="{% static 'inicio/js/main.js' %}"></script>
+
+{% endblock %}
