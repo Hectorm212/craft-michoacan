@@ -18,29 +18,29 @@
             </div>
         {% endif %}
 
-        <!-- Formulario POST de Django -->
+        <!-- Formulario de Django -->
         <form method="POST" action="{% url 'Contacto' %}" class="craft-contacto-form">
             {% csrf_token %}
 
-            <!-- Campo: Nombre completo -->
+            <!-- Nombre completo -->
             <div class="contacto-form-group">
                 <label for="nombre" class="contacto-label">Nombre completo</label>
                 <input type="text" id="nombre" name="nombre" class="contacto-input" placeholder="Tu nombre" required>
             </div>
 
-            <!-- Campo: Correo electrónico -->
+            <!-- Correo electrónico -->
             <div class="contacto-form-group">
                 <label for="email" class="contacto-label">Correo electrónico</label>
                 <input type="email" id="email" name="email" class="contacto-input" placeholder="ejemplo@correo.com" required>
             </div>
 
-            <!-- Campo: Asunto / Tipo de problema -->
+            <!-- Asunto / Tipo de problema -->
             <div class="contacto-form-group">
                 <label for="asunto" class="contacto-label">Asunto</label>
                 <input type="text" id="asunto" name="asunto" class="contacto-input" placeholder="Ej. Problema con mi pedido, Duda con el catálogo" required>
             </div>
 
-            <!-- Campo: Mensaje / Descripción del problema -->
+            <!-- Mensaje / Descripción del problema -->
             <div class="contacto-form-group">
                 <label for="mensaje" class="contacto-label">Mensaje o descripción del problema</label>
                 <textarea id="mensaje" name="mensaje" class="contacto-textarea" placeholder="Escribe aquí los detalles de tu situación..." rows="5" required></textarea>

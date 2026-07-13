@@ -24,7 +24,7 @@
         </form>
     </section>
 
-    <!-- Cuadrícula de Productos (Grid) -->
+    <!-- Cuadrícula de Productos -->
     <section class="products-grid">
         
         {% for producto in productos %}
@@ -45,7 +45,7 @@
         {% empty %}
         <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
             <h3>No se encontraron productos.</h3>
-            <p>Añade productos desde el panel de administrador para que aparezcan aquí.</p>
+            <p>Añade productos desde el panel de administración.</p>
         </div>
         {% endfor %}
 

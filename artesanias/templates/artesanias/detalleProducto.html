@@ -16,12 +16,12 @@
     <!-- Contenedor Principal del Producto -->
     <section class="product-detail-container">
         
-        <!-- Columna Izquierda: Imagen del Producto -->
+        <!-- Columna Izquierda con imagen del producto -->
         <div class="product-detail-image-box">
             <img src="{% static 'artesanias/img/jarras_barro.jpg' %}" alt="Jarrón de Barro" class="detail-img">
         </div>
 
-        <!-- Columna Derecha: Información y Acciones -->
+        <!-- Columna Derecha con información y acciones -->
         <div class="product-detail-info-box">
             <h1 class="detail-title">Jarrón de Barro</h1>
             <p class="detail-origin">Tzintzuntzan</p>
@@ -43,7 +43,7 @@
                 Una pieza de arte popular purépecha, famoso por su maestría artesanal. Se caracteriza por el uso de técnicas tradicionales como el barro bruñido y vidriado. Suele destacar por sus detalles pintados a mano con motivos locales.
             </p>
 
-            <!-- Sección de Compra (Cantidad y Precio) -->
+            <!-- Sección de Compra -->
             <div class="purchase-section">
                 <div class="quantity-wrapper">
                     <label class="quantity-label">Cantidad</label>
@@ -66,7 +66,7 @@
                 </button>
                 <button type="button" class="btn-wishlist" aria-label="Añadir a favoritos">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="heart-icon">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path> <!-- Icono de corazón -->
                     </svg>
                 </button>
             </div>
@@ -77,21 +77,5 @@
 </main>
 
 <!-- Script opcional integrado al final para dar vida al sumador/restador de cantidad -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const btnMinus = document.getElementById('btn-minus');
-        const btnPlus = document.getElementById('btn-plus');
-        const inputQty = document.getElementById('input-qty');
-
-        btnMinus.addEventListener('click', () => {
-            let val = parseInt(inputQty.value);
-            if(val > 1) inputQty.value = val - 1;
-        });
-
-        btnPlus.addEventListener('click', () => {
-            let val = parseInt(inputQty.value);
-            inputQty.value = val + 1;
-        });
-    });
-</script>
+<script src="{% static 'artesanias/js/main.js' %}"></script>
 {% endblock %}
