@@ -29,16 +29,20 @@ class Producto(models.Model):
     imagen = models.ImageField(upload_to='productos/', null=True, blank=True, verbose_name="Imagen del Producto")
     stock = models.PositiveIntegerField(default=0, verbose_name="Cantidad en Stock")
 
+
+
     def __str__(self):
         return self.nombre
+
 
     class Meta:
         verbose_name = "Producto"
         verbose_name_plural = "Productos"
         ordering = ['-id'] # Ordenar por los más recientes por defecto
 
+
 class MensajeContacto(models.Model):
-    nombre = models.CharField(max_length=150, verbose_name="Nombre completo")
+    nombre =  models.CharField(max_length=150, verbose_name="Nombre completo")
     email = models.EmailField(verbose_name="Correo electrónico")
     asunto = models.CharField(max_length=200, verbose_name="Asunto")
     mensaje = models.TextField(verbose_name="Mensaje")
@@ -47,6 +51,7 @@ class MensajeContacto(models.Model):
 
     def __str__(self):
         return f"{self.asunto} - {self.nombre}"
+
 
     class Meta:
         verbose_name = "Mensaje de Contacto"
