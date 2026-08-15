@@ -10,41 +10,40 @@
         <h1 class="form-title">Regístrate</h1>
         <p class="form-subtitle">Rellena los campos con tus datos</p>
 
-        <!-- Formulario POST de Django -->
         <form method="POST" action="" class="craft-form">
             {% csrf_token %}
 
-            <!-- Campo: Correo electrónico -->
+            <!--  Correo electrónico -->
             <div class="form-group">
                 <label for="email" class="form-label">Correo electrónico</label>
                 <input type="email" id="email" name="email" class="form-input" placeholder="ejemplo@correo.com" required>
             </div>
 
-            <!-- Campo: Contraseña -->
+            <!--  Contraseña -->
             <div class="form-group">
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" id="password" name="password" class="form-input" placeholder="Crea tu contraseña" required>
             </div>
 
-            <!-- Campo: Nombre completo -->
+            <!--  Nombre completo -->
             <div class="form-group">
                 <label for="nombre" class="form-label">Nombre completo</label>
                 <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre" required>
             </div>
 
-            <!-- Campo: Domicilio -->
+            <!-- Domicilio -->
             <div class="form-group">
                 <label for="domicilio" class="form-label">Domicilio</label>
                 <input type="text" id="domicilio" name="domicilio" class="form-input" placeholder="Calle, número, colonia" required>
             </div>
 
-            <!-- Campo: Ciudad -->
+            <!--  Ciudad -->
             <div class="form-group">
                 <label for="ciudad" class="form-label">Ciudad</label>
                 <input type="text" id="ciudad" name="ciudad" class="form-input" placeholder="Tu ciudad" required>
             </div>
 
-            <!-- Campo: Código postal -->
+            <!-- Código postal -->
             <div class="form-group">
                 <label for="cp" class="form-label">Código postal</label>
                 <input type="text" id="cp" name="cp" class="form-input" placeholder="00000" pattern="[0-9]{5}" required>
