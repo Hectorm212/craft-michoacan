@@ -42,10 +42,22 @@
                     <a href="{% url 'Registro' %}">Registrarse</a>
                 </div>
             </div>
-            <button id="cartBtn" class="cart-button" aria-label="Carrito de compras">
-                <img src="{% static 'artesanias/images/carrito.png' %}" alt="Carrito" class="cart-icon">
-                <span class="cart-count">0</span>
-            </button>
+           <!-- Enlace dinámico al carrito de compras -->
+<a href="{% url 'ver_carrito' %}" class="cart-link" style="position: relative; display: inline-block; text-decoration: none; margin-right: 15px;">
+    <!-- Tu ícono o imagen actual del carrito -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a2c11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    </svg>
+
+    <!-- (Opcional) Contador de artículos en rojo -->
+    {% if request.user.is_authenticated and request.user.carrito.items.count > 0 %}
+        <span style="position: absolute; top: -6px; right: -8px; background-color: #dc3545; color: white; font-size: 0.75rem; font-weight: bold; padding: 2px 6px; border-radius: 50%;">
+            {{ request.user.carrito.items.count }}
+        </span>
+    {% endif %}
+</a>
             {% endblock %}
         </div>
     </div>

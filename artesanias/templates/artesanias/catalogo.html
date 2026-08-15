@@ -26,30 +26,38 @@
 
     <!-- Cuadrícula de Productos (Grid) -->
     <section class="products-grid">
-        
-        {% for producto in productos %}
-        <article class="product-card">
-            <div class="product-image-box">
-                {% if producto.imagen %}
-                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="product-img">
-                {% else %}
-                    <div style="background-color: #eae1d8; width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; color: #795548;">Sin imagen</div>
-                {% endif %}
-            </div>
-            <div class="product-info">
-                <h3 class="product-name">{{ producto.nombre }}</h3>
-                <span class="product-price">${{ producto.precio }}</span>
-                <a href="{% url 'detalleProducto' %}" class="btn-ver-detalles">Ver detalles</a>
-            </div>
-        </article>
-        {% empty %}
-        <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
-            <h3>No se encontraron productos.</h3>
-            <p>Añade productos desde el panel de administrador para que aparezcan aquí.</p>
+    
+    {% for producto in productos %}
+    <article class="product-card">
+        <div class="product-image-box">
+            {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="product-img">
+            {% else %}
+                <div style="background-color: #eae1d8; width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; color: #795548;">Sin imagen</div>
+            {% endif %}
         </div>
-        {% endfor %}
+        <div class="product-info">
+            <h3 class="product-name">{{ producto.nombre }}</h3>
+            <span class="product-price">${{ producto.precio }} MXN</span>
+            
+            <div class="action-buttons-container" style="margin-top: 10px; display: flex; gap: 8px; flex-direction: column;">
+                <!-- 1. Enlace al detalle del producto pasando producto.id -->
+                <a href="{% url 'detalleProducto' producto.id %}" class="btn-ver-detalles">Ver detalles</a>
+                
+              
+            </div>
+        </div>
+    </article>
+    {% empty %}
+    <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+        <h3>No se encontraron productos.</h3>
+        <p>Añade productos desde el panel de administrador para que aparezcan aquí.</p>
+    </div>
+    {% endfor %}
 
-    </section>
+</section>
+
+    
 </main>
 
 

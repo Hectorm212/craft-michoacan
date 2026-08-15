@@ -1,0 +1,28 @@
+{% extends 'artesanias/encabezado.html' %}
+{% load static %}
+
+{% block titulo %}¡Compra Exitosa! - Craft Mich{% endblock %}
+
+{% block contenido %}
+<main class="catalogo-main" style="max-width: 600px; margin: 3rem auto; padding: 2rem; text-align: center; background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+    
+    <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
+    
+    <h1 style="color: #4a2c11; margin-bottom: 0.5rem;">¡Gracias por tu compra!</h1>
+    <p style="color: #666; font-size: 1.1rem; margin-bottom: 1.5rem;">Tu pedido ha sido procesado con éxito.</p>
+    
+    <div style="background-color: #f9f6f0; border: 1px dashed #4a2c11; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; text-align: left;">
+        <p style="margin: 0.5rem 0; color: #333;"><strong>Folio de Pedido:</strong> #{{ pedido.id }}</p>
+        <p style="margin: 0.5rem 0; color: #333;"><strong>Cliente:</strong> {{ pedido.usuario.get_full_name|default:pedido.usuario.username }}</p>
+        <p style="margin: 0.5rem 0; color: #333;"><strong>Total Simulado:</strong> ${{ pedido.total }} MXN</p>
+        <p style="margin: 0.5rem 0; color: #28a745;"><strong>Estado:</strong> Pagado / Confirmado</p>
+    </div>
+    <a href="{% url 'mis_pedidos' %}" style="background-color: #795548; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; margin-left: 10px;">
+        Ver Mis Pedidos
+    </a>
+    <a href="{% url 'Catalogo' %}" style="background-color: #4a2c11; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">
+        Volver al Catálogo
+    </a>
+
+</main>
+{% endblock %}

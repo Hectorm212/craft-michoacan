@@ -1,0 +1,96 @@
+{% extends 'artesanias/encabezado.html' %}
+{% load static %}
+
+{% block titulo %}Carrito de Compras - Craft Mich{% endblock %}
+
+{% block contenido %}
+<main class="catalogo-main" style="max-width: 1000px; margin: 0 auto; padding: 2rem 1rem;">
+    
+    <header style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="color: #4a2c11; font-family: serif; font-size: 2.2rem;">Tu Carrito de Compras</h1>
+        <p style="color: #666;">Revisa tus artesanías seleccionadas antes de proceder al pago.</p>
+    </header>
+
+    <!-- Mensajes de confirmación (Ej. "Producto agregado correctamente") -->
+    {% if messages %}
+        <div style="margin-bottom: 1.5rem;">
+            {% for message in messages %}
+                <div style="padding: 1rem; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 8px; text-align: center;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if items %}
+        <div style="background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 1.5rem; overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #eee; color: #795548;">
+                        <th style="padding: 12px;">Producto</th>
+                        <th style="padding: 12px; text-align: center;">Cantidad</th>
+                        <th style="padding: 12px; text-align: right;">Precio Unitario</th>
+                        <th style="padding: 12px; text-align: right;">Subtotal</th>
+                        <th style="padding: 12px; text-align: center;">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr style="border-bottom: 1px solid #f0f0f0;">
+                            <td style="padding: 16px 12px; display: flex; align-items: center; gap: 12px;">
+                                {% if item.producto.imagen %}
+                                    <img src="{{ item.producto.imagen.url }}" alt="{{ item.producto.nombre }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;">
+                                {% else %}
+                                    <div style="width: 60px; height: 60px; background-color: #eae1d8; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #795548;">Sin foto</div>
+                                {% endif %}
+                                <strong style="color: #333;">{{ item.producto.nombre }}</strong>
+                            </td>
+                            <td style="padding: 16px 12px; text-align: center; font-weight: bold; color: #555;">
+                                {{ item.cantidad }}
+                            </td>
+                            <td style="padding: 16px 12px; text-align: right; color: #666;">
+                                ${{ item.producto.precio }} MXN
+                            </td>
+                            <td style="padding: 16px 12px; text-align: right; font-weight: bold; color: #4a2c11;">
+                                ${{ item.subtotal }} MXN
+                            </td>
+                            <td style="padding: 16px 12px; text-align: center;">
+                                <a href="{% url 'eliminar_del_carrito' item.id %}" style="color: #dc3545; text-decoration: none; font-weight: bold; padding: 6px 12px; border: 1px solid #dc3545; border-radius: 6px; font-size: 0.85rem;" onclick="return confirm('¿Deseas quitar este producto del carrito?')">
+                                    Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Resumen del Total -->
+            <div style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #eee; padding-top: 1.5rem;">
+                <a href="{% url 'Catalogo' %}" class="btn-ver-detalles" style="text-decoration: none; display: inline-block;">
+                    ← Seguir Comprando
+                </a>
+                
+                <div style="text-align: right;">
+                    <span style="font-size: 1.2rem; color: #555;">Total estimado:</span>
+                    <h2 style="color: #4a2c11; margin: 0.2rem 0 1rem 0; font-size: 2rem;">${{ total }} MXN</h2>
+                    
+                    <a href="{% url 'procesar_compra' %}" style="background-color: #4a2c11; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">
+                         Proceder al Pago
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <!-- Carrito Vacío -->
+        <div style="text-align: center; background: #fff; border-radius: 12px; padding: 3rem 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🛒</div>
+            <h3 style="color: #4a2c11; margin-bottom: 0.5rem;">Tu carrito está vacío</h3>
+            <p style="color: #666; margin-bottom: 1.5rem;">Aún no has agregado ninguna artesanía a tu cesta de compras.</p>
+            <a href="{% url 'Catalogo' %}" style="background-color: #4a2c11; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">
+                Explorar Artesanías
+            </a>
+        </div>
+    {% endif %}
+
+</main>
+{% endblock %}

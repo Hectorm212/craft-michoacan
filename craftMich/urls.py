@@ -26,9 +26,17 @@ urlpatterns = [
     path('conocenos/', views.Conocenos, name="Conocenos"),
     path('catalogo/', views.Catalogo, name="Catalogo"),
     path('contacto/', views.Contacto, name="Contacto"),
-    path('detalleProducto/', views.DetalleProducto, name="detalleProducto"),
     path('registro/', views.Registro, name="Registro"),
     path('login/', views.Login, name="Login"),
+    # Rutas del Carrito de Compras
+    path('carrito/', views.ver_carrito, name="ver_carrito"),
+    path('carrito/agregar/<int:producto_id>/', views.agregar_al_carrito, name="agregar_al_carrito"),
+    path('carrito/eliminar/<int:item_id>/', views.eliminar_del_carrito, name="eliminar_del_carrito"),
+    path('detalleProducto/<int:producto_id>/', views.DetalleProducto, name="detalleProducto"),
+    # Checkout de compra
+    path('carrito/procesar/', views.procesar_compra, name="procesar_compra"),
+    path('compra-exitosa/<int:pedido_id>/', views.compra_exitosa, name="compra_exitosa"),
+    path('mis-pedidos/', views.mis_pedidos, name="mis_pedidos"),
 ]
 
 if settings.DEBUG:
