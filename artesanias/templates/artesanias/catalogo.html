@@ -8,57 +8,69 @@
     
     <!-- Sección de Filtros -->
     <section class="filters-section">
-        <form method="GET" action="{% url 'Catalogo' %}" style="display: flex; align-items: center; gap: 10px;">
-            <label for="filtro-municipio" class="filter-label">Filtro:</label>
-            <div class="select-wrapper">
-                <select name="municipio" id="filtro-municipio" class="filter-select" onchange="this.form.submit()">
-                    <option value="">Todos los municipios</option>
-                    {% for municipio in municipios %}
-                        <option value="{{ municipio.id }}" {% if municipio.id == municipio_seleccionado %}selected{% endif %}>
-                            {{ municipio.nombre }}
-                        </option>
-                    {% endfor %}
-                </select>
+        <form method="GET" action="{% url 'Catalogo' %}" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+            
+            <!-- Filtro por Municipio -->
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <label for="filtro-municipio" class="filter-label">Municipio:</label>
+                <div class="select-wrapper">
+                    <select name="municipio" id="filtro-municipio" class="filter-select" onchange="this.form.submit()">
+                        <option value="">Todos los municipios</option>
+                        {% for municipio in municipios %}
+                            <option value="{{ municipio.id }}" {% if municipio.id == municipio_seleccionado %}selected{% endif %}>
+                                {{ municipio.nombre }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
+
+            <!-- Filtro por Categoría -->
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <label for="filtro-categoria" class="filter-label">Categoría:</label>
+                <div class="select-wrapper">
+                    <select name="categoria" id="filtro-categoria" class="filter-select" onchange="this.form.submit()">
+                        <option value="">Todas las categorías</option>
+                        {% for categoria in categorias %}
+                            <option value="{{ categoria.id }}" {% if categoria.id == categoria_seleccionada %}selected{% endif %}>
+                                {{ categoria.nombre }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
             <noscript><button type="submit">Filtrar</button></noscript>
         </form>
     </section>
 
     <!-- Cuadrícula de Productos -->
     <section class="products-grid">
-    
-    {% for producto in productos %}
-    <article class="product-card">
-        <div class="product-image-box">
-            {% if producto.imagen %}
-                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="product-img">
-            {% else %}
-                <div style="background-color: #eae1d8; width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; color: #795548;">Sin imagen</div>
-            {% endif %}
-        </div>
-        <div class="product-info">
-            <h3 class="product-name">{{ producto.nombre }}</h3>
-            <span class="product-price">${{ producto.precio }} MXN</span>
-            
-            <div class="action-buttons-container" style="margin-top: 10px; display: flex; gap: 8px; flex-direction: column;">
-                <!-- 1. Enlace al detalle del producto pasando producto.id -->
-                <a href="{% url 'detalleProducto' producto.id %}" class="btn-ver-detalles">Ver detalles</a>
-                
-              
+        {% for producto in productos %}
+        <article class="product-card">
+            <div class="product-image-box">
+                {% if producto.imagen %}
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="product-img">
+                {% else %}
+                    <div style="background-color: #eae1d8; width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; color: #795548;">Sin imagen</div>
+                {% endif %}
             </div>
+            <div class="product-info">
+                <h3 class="product-name">{{ producto.nombre }}</h3>
+                <span class="product-price">${{ producto.precio }} MXN</span>
+                
+                <div class="action-buttons-container" style="margin-top: 10px; display: flex; gap: 8px; flex-direction: column;">
+                    <a href="{% url 'detalleProducto' producto.id %}" class="btn-ver-detalles">Ver detalles</a>
+                </div>
+            </div>
+        </article>
+        {% empty %}
+        <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+            <h3>No se encontraron productos.</h3>
+            <p>Intenta con otra combinación de filtros o añade productos desde el panel de administrador.</p>
         </div>
-    </article>
-    {% empty %}
-    <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
-        <h3>No se encontraron productos.</h3>
-        <p>Añade productos desde el panel de administrador para que aparezcan aquí.</p>
-    </div>
-    {% endfor %}
-
-</section>
-
+        {% endfor %}
+    </section>
     
 </main>
-
-
 {% endblock %}

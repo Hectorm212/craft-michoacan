@@ -7,8 +7,15 @@
 <main class="catalogo-main" style="max-width: 1000px; margin: 0 auto; padding: 2rem 1rem;">
     
     <header style="text-align: center; margin-bottom: 2rem;">
-        <h1 style="color: #4a2c11; font-family: serif; font-size: 2.2rem;">Tu Carrito de Compras</h1>
-        <p style="color: #666;">Revisa tus artesanías seleccionadas antes de proceder al pago.</p>
+        <h1 style="color: #4a2c11; font-family: serif; font-size: 2.2rem; margin-bottom: 0.5rem;">Tu Carrito de Compras</h1>
+        <p style="color: #666; margin-bottom: 1rem;">Revisa tus artesanías seleccionadas antes de proceder al pago.</p>
+        
+        <!-- Enlace rápido al historial de pedidos -->
+        <div>
+            <a href="{% url 'mis_pedidos' %}" style="color: #4a2c11; text-decoration: none; font-size: 0.9rem; font-weight: 600; border-bottom: 1px dashed #4a2c11; padding-bottom: 2px;">
+                📦 Ver mi historial de compras
+            </a>
+        </div>
     </header>
 
     <!-- Mensajes de confirmación (Ej. "Producto agregado correctamente") -->
@@ -65,7 +72,7 @@
             </table>
 
             <!-- Resumen del Total -->
-            <div style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #eee; padding-top: 1.5rem;">
+            <div style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #eee; padding-top: 1.5rem; flex-wrap: wrap; gap: 1rem;">
                 <a href="{% url 'Catalogo' %}" class="btn-ver-detalles" style="text-decoration: none; display: inline-block;">
                     ← Seguir Comprando
                 </a>
@@ -75,7 +82,7 @@
                     <h2 style="color: #4a2c11; margin: 0.2rem 0 1rem 0; font-size: 2rem;">${{ total }} MXN</h2>
                     
                     <a href="{% url 'procesar_compra' %}" style="background-color: #4a2c11; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">
-                         Proceder al Pago
+                        Proceder al Pago
                     </a>
                 </div>
             </div>
@@ -86,9 +93,15 @@
             <div style="font-size: 3rem; margin-bottom: 1rem;">🛒</div>
             <h3 style="color: #4a2c11; margin-bottom: 0.5rem;">Tu carrito está vacío</h3>
             <p style="color: #666; margin-bottom: 1.5rem;">Aún no has agregado ninguna artesanía a tu cesta de compras.</p>
-            <a href="{% url 'Catalogo' %}" style="background-color: #4a2c11; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">
-                Explorar Artesanías
-            </a>
+            
+            <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                <a href="{% url 'Catalogo' %}" style="background-color: #4a2c11; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">
+                    Explorar Artesanías
+                </a>
+                <a href="{% url 'mis_pedidos' %}" style="background-color: #f0e7db; color: #4a2c11; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; border: 1px solid #e2d7c7;">
+                    Ver mis compras
+                </a>
+            </div>
         </div>
     {% endif %}
 

@@ -20,23 +20,32 @@ from django.conf import settings
 from django.conf.urls.static import static
 from artesanias import views
 
+from artesanias import views as artesanias_views
+from usuarios import views as usuarios_views
+from pedidos import views as pedidos_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Principal, name="Principal"),
-    path('conocenos/', views.Conocenos, name="Conocenos"),
-    path('catalogo/', views.Catalogo, name="Catalogo"),
-    path('contacto/', views.Contacto, name="Contacto"),
-    path('registro/', views.Registro, name="Registro"),
-    path('login/', views.Login, name="Login"),
-    # Rutas del Carrito de Compras
-    path('carrito/', views.ver_carrito, name="ver_carrito"),
-    path('carrito/agregar/<int:producto_id>/', views.agregar_al_carrito, name="agregar_al_carrito"),
-    path('carrito/eliminar/<int:item_id>/', views.eliminar_del_carrito, name="eliminar_del_carrito"),
-    path('detalleProducto/<int:producto_id>/', views.DetalleProducto, name="detalleProducto"),
-    # Checkout de compra
-    path('carrito/procesar/', views.procesar_compra, name="procesar_compra"),
-    path('compra-exitosa/<int:pedido_id>/', views.compra_exitosa, name="compra_exitosa"),
-    path('mis-pedidos/', views.mis_pedidos, name="mis_pedidos"),
+    # App Artesanias (Catálogo y vistas informativas)
+    path('', artesanias_views.Principal, name="Principal"),
+    path('conocenos/', artesanias_views.Conocenos, name="Conocenos"),
+    path('catalogo/', artesanias_views.Catalogo, name="Catalogo"),
+    path('contacto/', artesanias_views.Contacto, name="Contacto"),
+    path('detalleProducto/<int:producto_id>/', artesanias_views.DetalleProducto, name="detalleProducto"),
+
+    # App Usuarios (Registro e inicio de sesión)
+    path('registro/', usuarios_views.Registro, name="Registro"),
+    path('login/', usuarios_views.Login, name="Login"),
+
+    # App Pedidos (Carrito y Checkout)
+    path('carrito/', pedidos_views.ver_carrito, name="ver_carrito"),
+    path('carrito/agregar/<int:producto_id>/', pedidos_views.agregar_al_carrito, name="agregar_al_carrito"),
+    path('carrito/eliminar/<int:item_id>/', pedidos_views.eliminar_del_carrito, name="eliminar_del_carrito"),
+    path('carrito/procesar/', pedidos_views.procesar_compra, name="procesar_compra"),
+    path('compra-exitosa/<int:pedido_id>/', pedidos_views.compra_exitosa, name="compra_exitosa"),
+    path('mis-pedidos/', pedidos_views.mis_pedidos, name="mis_pedidos"),
+
+    path('logout/', usuarios_views.Logout, name="Logout"),
 ]
 
 if settings.DEBUG:

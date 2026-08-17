@@ -1,0 +1,164 @@
+{% extends "admin/base.html" %}
+
+{% block extrahead %}
+{{ block.super }}
+<style>
+    /* Paleta Beige & Espresso (Solo colores) */
+    :root, [data-theme="light"], [data-theme="dark"] {
+        --primary: #4a2810 !important;
+        --secondary: #63391b !important;
+        --accent: #8b4a24 !important;
+        
+        --body-bg: #faf6f0 !important;
+        --body-fg: #2c1a0e !important;
+        --darkened-bg: #f3ece1 !important;
+        
+        --header-bg: #faf6f0 !important;
+        --header-color: #2c1a0e !important;
+        --header-link-color: #4a2810 !important;
+        
+        --breadcrumbs-bg: #f0e7db !important;
+        --breadcrumbs-fg: #5a3d28 !important;
+        --breadcrumbs-link-fg: #3b2215 !important;
+
+        --button-bg: #4a2810 !important;
+        --button-hover-bg: #361c0a !important;
+        --button-fg: #ffffff !important;
+
+        --link-fg: #4a2810 !important;
+        --link-hover-color: #8b4a24 !important;
+    }
+
+    body {
+        background-color: #faf6f0 !important;
+        color: #2c1a0e !important;
+    }
+
+    /* Encabezado */
+    #header {
+        background: #faf6f0 !important;
+        color: #2c1a0e !important;
+        border-bottom: 1px solid #e7ded2 !important;
+    }
+
+    #header a:link, #header a:visited, #branding h1 a {
+        color: #2c1a0e !important;
+    }
+
+    #user-tools a {
+        color: #4a2810 !important;
+    }
+
+    /* Migas de pan */
+    div.breadcrumbs {
+        background: #f0e7db !important;
+        color: #5a3d28 !important;
+        border-bottom: 1px solid #e2d7c7 !important;
+    }
+
+    div.breadcrumbs a {
+        color: #3b2215 !important;
+    }
+
+    /* Módulos y barra lateral */
+    #nav-sidebar, .module {
+        background: #ffffff !important;
+        border: 1px solid #e7ded2 !important;
+    }
+
+    .module caption, 
+    #nav-sidebar .module caption, 
+    .module h2, 
+    #nav-sidebar th {
+        background: #f0e7db !important;
+        color: #3b2215 !important;
+        border-bottom: 1px solid #e2d7c7 !important;
+    }
+
+    .module caption a, 
+    #nav-sidebar .module caption a, 
+    .module h2 a, 
+    .module caption a:link, 
+    .module caption a:visited,
+    #nav-sidebar caption a:link,
+    #nav-sidebar caption a:visited {
+        color: #3b2215 !important;
+    }
+
+    #nav-sidebar td, 
+    .module table td, 
+    #nav-sidebar th.model-name, 
+    .module table th.model-name {
+        background: #ffffff !important;
+        color: #2c1a0e !important;
+        border-bottom: 1px solid #f6f1ea !important;
+    }
+
+    #nav-sidebar a, .module table a {
+        color: #2c1a0e !important;
+    }
+
+    #nav-sidebar a:hover, .module table a:hover {
+        color: #8b4a24 !important;
+    }
+
+    .addlink, #nav-sidebar .addlink {
+        color: #63391b !important;
+    }
+
+    /* Tablas */
+    #changelist {
+        background: #ffffff !important;
+        border: 1px solid #e7ded2 !important;
+    }
+
+    #changelist table thead th {
+        background: #f0e7db !important;
+        color: #3b2215 !important;
+        border-bottom: 1px solid #e2d7c7 !important;
+    }
+
+    #changelist table tbody tr {
+        background-color: #ffffff !important;
+        color: #2c1a0e !important;
+    }
+
+    #changelist table tbody tr:hover {
+        background-color: #faf4ec !important;
+    }
+
+    /* Filtro */
+    #changelist-filter {
+        background: #ffffff !important;
+        border-left: 1px solid #e7ded2 !important;
+    }
+
+    #changelist-filter h2 {
+        background: #f0e7db !important;
+        color: #3b2215 !important;
+    }
+
+    #changelist-filter a {
+        color: #5a3d28 !important;
+    }
+
+    #changelist-filter a:hover, #changelist-filter li.selected a {
+        color: #4a2810 !important;
+    }
+
+    /* Botones */
+    .button, input[type=submit], input[type=button], .submit-row input, a.button, .object-tools a {
+        background: #4a2810 !important;
+        color: #ffffff !important;
+        border: none !important;
+    }
+
+    .button:hover, input[type=submit]:hover, .object-tools a:hover {
+        background: #361c0a !important;
+    }
+
+    .button.default, input[type=submit].default {
+        background: #4a2810 !important;
+    }
+</style>
+{% endblock %}
