@@ -1,8 +1,21 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Solución para SEO: Metadescripción -->
+    <meta name="description" content="Craft Mich - Tienda en línea de artesanías tradicionales de Michoacán. Encuentra jarrones de barro, catrinas y piezas únicas hechas a mano.">
+    
+    <!-- Solución para SEO y Accesibilidad: Elemento <title> -->
+    <title>{% block titulo %}Craft Mich - Artesanías Michoacanas{% endblock %}</title>
+
+    <link href="{% static 'artesanias/css/estilo.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
 {% block encabezado %}
-
-<link href="{% static 'artesanias/css/estilo.css' %}" rel="stylesheet" type="text/css">
-
 <header class="craft-header">
     <div class="header-container">
         <!-- Bloque de Logo -->
@@ -89,6 +102,7 @@
         </div>
     </div>
 </header>
+{% endblock %}
 
 {% block contenido %}
 {% endblock %}
@@ -118,5 +132,5 @@
 </footer>
 
 <script src="{% static 'artesanias/js/main.js' %}"></script>
-
-{% endblock %}
+</body>
+</html>
