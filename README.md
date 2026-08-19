@@ -9,12 +9,17 @@ Bienvenido al repositorio oficial de **Craft Mich**, el catálogo digital de art
 
 ## 👥 Roles y Responsabilidades del Equipo
 
-Para cumplir con los criterios de evaluación y asegurar que todos los integrantes tengan responsabilidades asignadas, nos dividiremos el desarrollo de la siguiente manera:
+Para cumplir con los criterios de evaluación y asegurar que todos los integrantes tengan 
+responsabilidades asignadas, nos dividiremos el desarrollo de la siguiente manera:
 
-*   **Cristopher (Líder de Proyecto / @Cris786-code):** Inicialización del entorno, configuración del repositorio en GitHub, estructura base de Django y control de versiones.
-*   **Mariana:** Diseño y desarrollo del Frontend. Creación de la plantilla global (`base.html`) y las vistas del catálogo (`index.html`, `catalogo.html`, `nosotros.html`) alineadas con los Mockups originales.
-*   **Emiliano:** Configuración de la persistencia de datos. Creación de los modelos en `models.py` (Categorías, Productos, Reseñas y Estados/Municipios).
-*   **Héctor:** Configuración y personalización del Panel de Administración de Django (`admin.py`), carga de datos iniciales de prueba (artesanías de barro, textil y cerámica) y optimización de filtros.
+*   **Cristopher (Líder de Proyecto / @Cris786-code):** Inicialización del entorno, 
+configuración del repositorio en GitHub, estructura base de Django y control de versiones.
+*   **Mariana:** Diseño y desarrollo del Frontend. Creación de la plantilla global (`principal.html`) 
+y las vistas del catálogo (`index.html`, `catalogo.html`, `nosotros.html`) alineadas con los Mockups originales.
+*   **Emiliano:** Configuración de la persistencia de datos. 
+Creación de los modelos en `models.py` (Categorías, Productos, Reseñas y Estados/Municipios).
+*   **Héctor:** Configuración y personalización del Panel de Administración de Django 
+(`admin.py`), carga de datos iniciales de prueba (artesanías de barro, textil y cerámica) y optimización de filtros.
 
 ---
 
